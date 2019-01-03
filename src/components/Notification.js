@@ -11,15 +11,11 @@ class Notification extends React.Component {
 		message: '',
 	};
 
-	static getDerivedStateFromProps(props) {
-		return {
+	componentWillReceiveProps(props) {
+		this.setState({
 			...props.notification, open: true,
-		};
+		});
 	}
-
-	handleClick = () => {
-		this.setState({ open: true });
-	};
 
 	handleClose = () => {
 		this.setState({ open: false });

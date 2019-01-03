@@ -7,11 +7,11 @@ export default (text, id, color, onClick, Icon, isDisabled = false) => (
 	<Tooltip TransitionComponent={Zoom} title={text} style={{ fontSize: 40 }}>
 		<div>
 			<IconButton
-  color={color}
-  onClick={onClick}
-  fontSize="small"
-  disabled={isDisabled}
-  id={id}
+				color={color}
+				onClick={onClick}
+				fontSize="small"
+				disabled={isDisabled}
+				id={id}
 			>
 				{Icon}
 			</IconButton>

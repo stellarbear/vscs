@@ -11,11 +11,12 @@ class ModalExport extends React.Component {
 		json: '',
 	}
 
-	static getDerivedStateFromProps = (props) => {
-		const { list, isEmpty } = props.snippets;
+	componentWillMount() {
+		const { snippets } = this.props;
+		const { list, isEmpty } = snippets;
 
 		if (isEmpty) {
-			return null;
+			return;
 		}
 
 		let json = '';
@@ -24,8 +25,7 @@ class ModalExport extends React.Component {
 		});
 
 		json = `{\n\t${json.slice(0, ',\n'.length * -1).split('\n').join('\n\t')}\n}`;
-
-		return { json };
+		this.setState({ json });
 	}
 
 	onDismiss = () => history.push('/editor');

@@ -20,10 +20,10 @@ class Modal extends React.Component {
 		} = this.props;
 		return ReactDOM.createPortal(
 			<Dialog
-  fullWidth
-  open
-  scroll="paper"
-  onClose={onDismiss}
+				fullWidth
+				open
+				scroll="paper"
+				onClose={onDismiss}
 			>
 				<DialogTitle>{title}</DialogTitle>
 				<DialogContent>{content}</DialogContent>
