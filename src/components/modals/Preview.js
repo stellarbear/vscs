@@ -11,12 +11,18 @@ class ModalPreview extends React.Component {
 		json: '',
 	}
 
-	static getDerivedStateFromProps(props) {
-		const { list, selected } = props.snippets;
+	componentWillMount() {
+		const { snippets } = this.props;
+		const { list, selected } = snippets;
 		const snippet = list[selected];
 
+		if (Number.isNaN(selected) || snippet === undefined) {
+			history.push('/editor');
+			return;
+		}
+
 		const json = snippet.export();
-		return { json };
+		this.setState({ json });
 	}
 
 	onDismiss = () => {

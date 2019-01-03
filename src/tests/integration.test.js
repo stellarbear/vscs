@@ -217,7 +217,7 @@ describe('PLACEHOLDERS', () => {
 
 		//  Verify changes in the store
 		const { selected, list } = store.getState().snippets;
-		expect(list[selected].placeholders.length).toEqual(3);
+		expect(list[selected].placeholders.length).toEqual(1);
 	});
 
 	test('remove all placeholders', () => {
@@ -233,10 +233,10 @@ describe('PLACEHOLDERS', () => {
 	test('change a placeholder', () => {
 		//  Add 3 placeholders
 		app.find('button#placeholder-add-button').simulate('click');
-		app.find('button#placeholder-add-button').simulate('click');
-		app.find('button#placeholder-add-button').simulate('click');
 		app.find('input#placeholder-0-input').simulate('change', { target: { value: 'cat' } });
+		app.find('button#placeholder-add-button').simulate('click');
 		app.find('input#placeholder-1-input').simulate('change', { target: { value: 'dog' } });
+		app.find('button#placeholder-add-button').simulate('click');
 		app.find('input#placeholder-2-input').simulate('change', { target: { value: 'bird' } });
 		app.update();
 

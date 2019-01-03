@@ -65,12 +65,19 @@ const BarPlaceholder = (props) => {
 		);
 	};
 
+	const addPlaceholder = () => {
+		const { selectedSnippet } = props;
+
+		const placeholders = [...new Set([...selectedSnippet.placeholders, ''])];
+		editPlaceholders(placeholders);
+	};
+
 	const renderButtons = () => {
-		const { selectedSnippet, isEmpty } = props;
+		const { isEmpty } = props;
 
 		return (
 			<Grid container>
-				{Button('ADD', 'placeholder-add-button', 'primary', () => editPlaceholders([...selectedSnippet.placeholders, '']), <AddIcon />, isEmpty)}
+				{Button('ADD', 'placeholder-add-button', 'primary', addPlaceholder, <AddIcon />, isEmpty)}
 				<Grid item xs />
 				{Button('CLEAR ALL', 'placeholder-delete-all-button', 'secondary', () => editPlaceholders([]), <DeleteIcon />, isEmpty)}
 			</Grid>
