@@ -33,6 +33,16 @@ class BarSnippet extends React.Component {
 		this.setState({ [name]: value });
 	}
 
+	filterByNameCallback = (id) => {
+		const { snippets } = this.props;
+		const { filterByName } = this.state;
+
+		return snippets.list[id].name.toUpperCase()
+			.includes(filterByName.toUpperCase());
+	}
+
+	convertToIntCallback = id => parseInt(id, 10)
+
 	onKeyDown = (event) => {
 		const UP = 38;
 		const DOWN = 40;
@@ -59,15 +69,42 @@ class BarSnippet extends React.Component {
 		}
 	}
 
-	filterByNameCallback = (id) => {
-		const { snippets } = this.props;
-		const { filterByName } = this.state;
+	shortenField = (field) => {
+		if (field.length <= 4) {
+			return field;
+		}
 
-		return snippets.list[id].name.toUpperCase()
-			.includes(filterByName.toUpperCase());
+		return `${field.slice(0, 4)}..`;
 	}
 
-	convertToIntCallback = id => parseInt(id, 10)
+	renderField = (id) => {
+		const { snippets, selectSnippet } = this.props;
+		const isSelected = snippets.selected === id;
+		const snippet = snippets.list[id];
+
+		return (
+			<ListItem
+				button
+				selected={isSelected}
+				className='snippet-entry'
+				id={`snippet-${id}-entry`}
+				onKeyDown={this.onKeyDown}
+				onClick={() => selectSnippet(id)}
+			>
+				<ListItemAvatar>
+					<Avatar>
+						<Typography variant='caption'>
+							{this.shortenField(snippet.prefix)}
+						</Typography>
+					</Avatar>
+				</ListItemAvatar>
+				<ListItemText
+					primary={snippet.name}
+					secondary={snippet.description}
+				/>
+			</ListItem>
+		);
+	}
 
 	renderFields = () => {
 		const { snippets } = this.props;
@@ -78,42 +115,16 @@ class BarSnippet extends React.Component {
 
 		return (
 			<List>
-				{Object.keys(snippets.list)
+				{Object
+					.keys(snippets.list)
 					.filter(this.filterByNameCallback)
 					.map(this.convertToIntCallback)
-					.map((id) => {
-						const snippet = snippets.list[id];
-						const isSelected = snippets.selected === id;
-
-						const { selectSnippet } = this.props;
-
-						return (
-							<div key={id}>
-								<Divider />
-								<ListItem
-									button
-									className='snippet-entry'
-									id={`snippet-${id}-entry`}
-									selected={isSelected}
-
-									onKeyDown={this.onKeyDown}
-									onClick={() => selectSnippet(id)}
-								>
-									<ListItemAvatar>
-										<Avatar>
-											<Typography variant='caption'>
-												{snippet.prefix}
-											</Typography>
-										</Avatar>
-									</ListItemAvatar>
-									<ListItemText
-										primary={snippet.name}
-										secondary={snippet.description}
-									/>
-								</ListItem>
-							</div>
-						);
-					})}
+					.map(id => (
+<div key={id}>
+							<Divider />
+							{this.renderField(id)}
+</div>
+))}
 			</List>
 		);
 	}
