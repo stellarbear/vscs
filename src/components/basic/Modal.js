@@ -10,7 +10,7 @@ class Modal extends React.Component {
 	renderActions = (actions, onDismiss) => (
 		<>
 			{actions}
-			<Button color="secondary" onClick={onDismiss} id="dismiss-modal-button"> Cancel</Button>
+			<Button color='secondary' onClick={onDismiss} id='dismiss-modal-button'> Cancel</Button>
 		</>
 	)
 
@@ -22,7 +22,7 @@ class Modal extends React.Component {
 			<Dialog
 				fullWidth
 				open
-				scroll="paper"
+				scroll='paper'
 				onClose={onDismiss}
 			>
 				<DialogTitle>{title}</DialogTitle>

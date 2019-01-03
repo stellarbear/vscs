@@ -32,8 +32,8 @@ const BarPlaceholder = (props) => {
 		<TextField
 			style={{ marginRight: 8, marginTop: 0 }}
 			id={`placeholder-${index}-input`}
-			margin="normal"
-			variant="filled"
+			margin='normal'
+			variant='filled'
 
 			label={`{${index + 1}:${placeholder}}`}
 
@@ -52,7 +52,7 @@ const BarPlaceholder = (props) => {
 		return (
 			<div style={{ marginTop: 16 }}>
 				{selectedSnippet.placeholders.map((placeholder, index) => (
-					<Grid container alignItems="center" key={index}>
+					<Grid container alignItems='center' key={index}>
 						<Grid item xs>
 							{renderPlaceholder(placeholder, index)}
 						</Grid>
@@ -78,7 +78,7 @@ const BarPlaceholder = (props) => {
 	};
 
 	return (
-		<Bar header="PLACEHOLDERS">
+		<Bar header='PLACEHOLDERS'>
 			{renderButtons()}
 			<Divider />
 			{renderFields()}

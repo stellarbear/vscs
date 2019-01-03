@@ -15,21 +15,21 @@ const style = {
 const Main = () => (
 	<Grid
 		container
-		justify="center"
-		alignItems="center"
+		justify='center'
+		alignItems='center'
 	>
 
 		<Grid item xs={12} style={{ height: '33vh' }} />
-		<Typography variant="h1" color="primary">VSCS</Typography>
+		<Typography variant='h1' color='primary'>VSCS</Typography>
 
 		<Grid item xs={12} />
-		<Typography variant="h5">Visual Studio Code snippets</Typography>
+		<Typography variant='h5'>Visual Studio Code snippets</Typography>
 
 		<Grid item xs={12} style={{ height: '10vh' }} />
 		<Button
 			style={style.button}
 			onClick={() => history.push('/editor')}
-			id="editor-button"
+			id='editor-button'
 		>
 			open snippets editor
 		</Button>

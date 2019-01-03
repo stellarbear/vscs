@@ -30,9 +30,9 @@ class ModalImport extends React.Component {
 	renderActions = () => (
 		<>
 			<Button
-				color="primary"
+				color='primary'
 				onClick={() => this.handleImport()}
-				id="import-modal-button"
+				id='import-modal-button'
 			>
 				Import
 			</Button>
@@ -44,16 +44,16 @@ class ModalImport extends React.Component {
 
 		return (
 			<TextField
-				id="import-modal-textarea"
-				variant="filled"
-				rowsMax="30"
+				id='import-modal-textarea'
+				variant='filled'
+				rowsMax='30'
 				onChange={this.handleTextChange}
 				autoFocus
 				multiline
-				margin="dense"
-				label="snippet.json"
+				margin='dense'
+				label='snippet.json'
 				fullWidth
-				autoComplete="off"
+				autoComplete='off'
 				value={json}
 			/>
 		);
@@ -63,7 +63,7 @@ class ModalImport extends React.Component {
 	render() {
 		return (
 			<Modal
-				title="Import your *.json snippet"
+				title='Import your *.json snippet'
 				content={this.renderContent()}
 				actions={this.renderActions()}
 				onDismiss={this.onDismiss}

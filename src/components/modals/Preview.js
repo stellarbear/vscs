@@ -24,7 +24,7 @@ class ModalPreview extends React.Component {
 	}
 
 	handleCopyClick = (event) => {
-		document.getElementById('json-clipboard').select();
+		document.getElementById('preview-modal-textarea').select();
 		document.execCommand('copy');
 
 		event.target.focus();
@@ -34,7 +34,7 @@ class ModalPreview extends React.Component {
 
 	renderActions = () => (
 		<>
-			<Button color="primary" onClick={this.handleCopyClick}>
+			<Button id='preview-modal-copy-button' color='primary' onClick={this.handleCopyClick}>
 				Copy to clipboard
 			</Button>
 		</>
@@ -45,15 +45,15 @@ class ModalPreview extends React.Component {
 
 		return (
 			<TextField
-				id="preview-modal-textarea"
-				variant="filled"
-				rowsMax="30"
+				id='preview-modal-textarea'
+				variant='filled'
+				rowsMax='30'
 				autoFocus
 				multiline
-				margin="dense"
-				label="snippet.json"
+				margin='dense'
+				label='snippet.json'
 				fullWidth
-				autoComplete="off"
+				autoComplete='off'
 				value={json}
 			/>
 		);
@@ -63,7 +63,7 @@ class ModalPreview extends React.Component {
 	render() {
 		return (
 			<Modal
-				title="Snippet preview"
+				title='Snippet preview'
 				content={this.renderContent()}
 				actions={this.renderActions()}
 				onDismiss={this.onDismiss}

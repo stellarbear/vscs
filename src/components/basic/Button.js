@@ -9,7 +9,7 @@ export default (text, id, color, onClick, Icon, isDisabled = false) => (
 			<IconButton
 				color={color}
 				onClick={onClick}
-				fontSize="small"
+				fontSize='small'
 				disabled={isDisabled}
 				id={id}
 			>

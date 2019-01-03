@@ -10,7 +10,7 @@ const style = {
 
 const Bar = ({ header, children }) => (
 	<Paper style={style}>
-		<Typography color="primary" align="center" variant="h5">{header}</Typography>
+		<Typography color='primary' align='center' variant='h5'>{header}</Typography>
 		<Divider />
 		{children}
 	</Paper>

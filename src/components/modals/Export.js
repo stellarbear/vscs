@@ -31,7 +31,7 @@ class ModalExport extends React.Component {
 	onDismiss = () => history.push('/editor');
 
 	handleCopyClick = (event) => {
-		document.getElementById('json-clipboard').select();
+		document.getElementById('export-modal-textarea').select();
 		document.execCommand('copy');
 
 		event.target.focus();
@@ -40,7 +40,7 @@ class ModalExport extends React.Component {
 	}
 
 	renderActions = () => (
-		<Button color="primary" onClick={this.handleCopyClick}>
+		<Button id='export-modal-copy-button' color='primary' onClick={this.handleCopyClick}>
 			Export
 		</Button>
 	)
@@ -50,15 +50,15 @@ class ModalExport extends React.Component {
 
 		return (
 			<TextField
-				id="export-modal-textarea"
-				variant="filled"
-				rowsMax="30"
+				id='export-modal-textarea'
+				variant='filled'
+				rowsMax='30'
 				autoFocus
 				multiline
-				margin="dense"
-				label="snippet.json"
+				margin='dense'
+				label='snippet.json'
 				fullWidth
-				autoComplete="off"
+				autoComplete='off'
 				value={json}
 			/>
 		);
@@ -68,7 +68,7 @@ class ModalExport extends React.Component {
 	render() {
 		return (
 			<Modal
-				title="Snippet preview"
+				title='Snippet preview'
 				content={this.renderContent()}
 				actions={this.renderActions()}
 				onDismiss={this.onDismiss}

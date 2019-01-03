@@ -92,7 +92,7 @@ class BarSnippet extends React.Component {
 								<Divider />
 								<ListItem
 									button
-									className="snippet-entry"
+									className='snippet-entry'
 									id={`snippet-${id}-entry`}
 									selected={isSelected}
 
@@ -101,7 +101,7 @@ class BarSnippet extends React.Component {
 								>
 									<ListItemAvatar>
 										<Avatar>
-											<Typography variant="caption">
+											<Typography variant='caption'>
 												{snippet.prefix}
 											</Typography>
 										</Avatar>
@@ -123,15 +123,15 @@ class BarSnippet extends React.Component {
 
 		return (
 			<TextField
-				id="filter-name-input"
-				name="filterByName"
+				id='filter-name-input'
+				name='filterByName'
 				value={filterByName}
 				onChange={this.handleChange}
-				label="Search by name"
+				label='Search by name'
 				style={{ marginRight: 8 }}
 				fullWidth
-				margin="normal"
-				variant="filled"
+				margin='normal'
+				variant='filled'
 			/>
 		);
 	}
@@ -156,7 +156,7 @@ class BarSnippet extends React.Component {
 
 	render() {
 		return (
-			<Bar header="SNIPPETS">
+			<Bar header='SNIPPETS'>
 				{this.renderButtons()}
 				<Divider />
 				{this.renderNameFilterInput()}

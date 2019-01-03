@@ -20,9 +20,9 @@ const BarEdit = (props) => {
 		return (
 			<TextField
 				style={{ marginRight: 8, marginTop: 0 }}
-				margin="normal"
-				variant="filled"
-				autoComplete="off"
+				margin='normal'
+				variant='filled'
+				autoComplete='off'
 
 				id={`snippet-${name}-input`}
 				helperText={helperText}
@@ -55,7 +55,7 @@ const BarEdit = (props) => {
 	};
 
 	return (
-		<Bar header="EDITOR">
+		<Bar header='EDITOR'>
 			{renderInputFields()}
 		</Bar>
 	);

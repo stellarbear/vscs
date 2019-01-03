@@ -31,9 +31,9 @@ class Notification extends React.Component {
 					TransitionComponent={Fade}
 					action={(
 						<IconButton
-							key="close"
-							aria-label="Close"
-							color="inherit"
+							key='close'
+							aria-label='Close'
+							color='inherit'
 							onClick={this.handleClose}
 						>
 							<CloseIcon />

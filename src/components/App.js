@@ -23,11 +23,11 @@ const App = () => (
 	<MuiThemeProvider theme={theme}>
 		<BarNavigation />
 		<Switch>
-			<Route path="/" exact component={Main} />
-			<Route path="/editor" exact component={Editor} />
-			<Route path="/editor/import" exact component={ImportModal} />
-			<Route path="/editor/export" exact component={ExportModal} />
-			<Route path="/editor/preview" exact component={PreviewModal} />
+			<Route path='/' exact component={Main} />
+			<Route path='/editor' exact component={Editor} />
+			<Route path='/editor/import' exact component={ImportModal} />
+			<Route path='/editor/export' exact component={ExportModal} />
+			<Route path='/editor/preview' exact component={PreviewModal} />
 		</Switch>
 		<Notification />
 	</MuiThemeProvider>

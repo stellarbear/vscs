@@ -278,6 +278,9 @@ describe('MODALS', () => {
 		app.find('button#snippet-preview-button').simulate('click');
 		expect(trimString(app.find('textarea#preview-modal-textarea').prop('value'))).toEqual(expected);
 
+		//	Copy to clipboard
+		//	Can't find how to expect an exception or mock document.execCommand
+
 		//  Dismiss modal
 		app.find('button#dismiss-modal-button').simulate('click');
 	});
@@ -299,8 +302,15 @@ describe('MODALS', () => {
 	});
 
 	test('exporting snippets', () => {
+		//  Navigate to export modal page
 		app.find('button#snippet-export-button').simulate('click');
 		expect(trimString(app.find('textarea#export-modal-textarea').prop('value'))).toEqual(importString);
+
+		//	Copy to clipboard
+		//	Can't find how to expect an exception or mock document.execCommand
+
+		//  Dismiss modal
+		app.find('button#dismiss-modal-button').simulate('click');
 	});
 });
 
