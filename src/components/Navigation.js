@@ -16,10 +16,12 @@ function GitHub(props) {
 	);
 }
 
+const githubRepo = 'https://github.com/stellarbear/vscs';
+
 const Navigation = () => (
 	<AppBar position='static'>
 		<Toolbar style={{ background: 'linear-gradient(45deg, #2196f3 30%, #21cbf3 90%)' }}>
-			<IconButton>
+			<IconButton onClick={() => window.open(githubRepo, '_blank')}>
 				<GitHub />
 			</IconButton>
 			<Button color='inherit' onClick={() => history.push('/')}>Main</Button>
