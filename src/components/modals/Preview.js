@@ -59,6 +59,7 @@ class ModalPreview extends React.Component {
 				margin='dense'
 				label='snippet.json'
 				fullWidth
+				spellCheck={false}
 				autoComplete='off'
 				value={json}
 			/>
