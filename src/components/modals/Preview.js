@@ -17,7 +17,7 @@ class ModalPreview extends React.Component {
 		const snippet = list[selected];
 
 		if (Number.isNaN(selected) || snippet === undefined) {
-			history.push('/editor');
+			this.onDismiss();
 			return;
 		}
 
@@ -26,7 +26,7 @@ class ModalPreview extends React.Component {
 	}
 
 	onDismiss = () => {
-		history.push('/editor');
+		history.push('/');
 	}
 
 	handleCopyClick = (event) => {

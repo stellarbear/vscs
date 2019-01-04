@@ -28,7 +28,7 @@ class ModalExport extends React.Component {
 		this.setState({ json });
 	}
 
-	onDismiss = () => history.push('/editor');
+	onDismiss = () => history.push('/');
 
 	handleCopyClick = (event) => {
 		document.getElementById('export-modal-textarea').select();

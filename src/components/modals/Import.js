@@ -13,7 +13,7 @@ class ModalImport extends React.Component {
 	}
 
 	onDismiss = () => {
-		history.push('/editor');
+		history.push('/');
 	}
 
 	handleTextChange = (event) => {

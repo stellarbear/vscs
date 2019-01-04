@@ -9,7 +9,6 @@ import ExportModal from './modals/Export';
 import PreviewModal from './modals/Preview';
 import Notification from './Notification';
 import BarNavigation from './Navigation';
-import Main from './pages/Main';
 
 const theme = createMuiTheme({
 	palette: {
@@ -23,11 +22,10 @@ const App = () => (
 	<MuiThemeProvider theme={theme}>
 		<BarNavigation />
 		<Switch>
-			<Route path='/' exact component={Main} />
-			<Route path='/editor' exact component={Editor} />
-			<Route path='/editor/import' exact component={ImportModal} />
-			<Route path='/editor/export' exact component={ExportModal} />
-			<Route path='/editor/preview' exact component={PreviewModal} />
+			<Route path='/' exact component={Editor} />
+			<Route path='/import' exact component={ImportModal} />
+			<Route path='/export' exact component={ExportModal} />
+			<Route path='/preview' exact component={PreviewModal} />
 		</Switch>
 		<Notification />
 	</MuiThemeProvider>

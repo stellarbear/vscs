@@ -158,9 +158,9 @@ class BarSnippet extends React.Component {
 				{Button('CLONE', 'snippet-clone-button', 'secondary', () => addSnippet(snippet.clone()), <CloneIcon />, isEmpty)}
 				{Button('DELETE', 'snippet-delete-button', 'secondary', () => deleteSnippet(selected), <DeleteIcon />, isEmpty)}
 				<Grid item xs />
-				{Button('IMPORT', 'snippet-import-button', 'primary', () => history.push('/editor/import'), <ImportIcon />)}
-				{Button('PREVIEW', 'snippet-preview-button', 'primary', () => history.push('/editor/preview'), <PreviewIcon />, isEmpty)}
-				{Button('EXPORT', 'snippet-export-button', 'secondary', () => history.push('/editor/export'), <ExportIcon />, isEmpty)}
+				{Button('IMPORT', 'snippet-import-button', 'primary', () => history.push('/import'), <ImportIcon />)}
+				{Button('PREVIEW', 'snippet-preview-button', 'primary', () => history.push('/preview'), <PreviewIcon />, isEmpty)}
+				{Button('EXPORT', 'snippet-export-button', 'secondary', () => history.push('/export'), <ExportIcon />, isEmpty)}
 			</Grid>
 		);
 	}

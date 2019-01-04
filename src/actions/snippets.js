@@ -24,7 +24,7 @@ const importSnippets = json => (dispatch) => {
 	try {
 		const parsed = JSON.parse(json);
 
-		history.push('/editor');
+		history.push('/');
 		dispatch(clearSnippets());
 		Object.keys(parsed).forEach((key) => {
 			const snippetJson = parsed[key];

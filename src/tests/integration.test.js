@@ -26,10 +26,6 @@ beforeAll(() => {
 			</Router>
 		</Provider>,
 	);
-
-	//  Navigate to editor
-	app.find('button#editor-button').simulate('click');
-	app.update();
 });
 
 describe('SNIPPETS', () => {
@@ -276,6 +272,7 @@ describe('MODALS', () => {
 
 		//  Navigate to preview modal page
 		app.find('button#snippet-preview-button').simulate('click');
+		app.update();
 		expect(trimString(app.find('textarea#preview-modal-textarea').prop('value'))).toEqual(expected);
 
 		//	Copy to clipboard
@@ -283,6 +280,7 @@ describe('MODALS', () => {
 
 		//  Dismiss modal
 		app.find('button#dismiss-modal-button').simulate('click');
+		app.update();
 	});
 
 	const importString = '{"importReact": {"prefix": "ir","body": ["import React from \'react\';"],"description": "import React from \'react\'"},"exportDefault": {"prefix": "ed","body": ["export default ${1:component};"],"description": "export default component"}}';
@@ -290,6 +288,7 @@ describe('MODALS', () => {
 		app.find('button#snippet-import-button').simulate('click');
 		app.find('textarea#import-modal-textarea').simulate('change', { target: { value: importString } });
 		app.find('button#import-modal-button').simulate('click');
+		app.update();
 
 		expect(Object.keys(store.getState().snippets.list).length).toEqual(2);
 		expect(store.getState().snippets.list[0].name).toEqual('importReact');
@@ -304,6 +303,7 @@ describe('MODALS', () => {
 	test('exporting snippets', () => {
 		//  Navigate to export modal page
 		app.find('button#snippet-export-button').simulate('click');
+		app.update();
 		expect(trimString(app.find('textarea#export-modal-textarea').prop('value'))).toEqual(importString);
 
 		//	Copy to clipboard
@@ -311,6 +311,7 @@ describe('MODALS', () => {
 
 		//  Dismiss modal
 		app.find('button#dismiss-modal-button').simulate('click');
+		app.update();
 	});
 });
 

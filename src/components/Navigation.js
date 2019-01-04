@@ -1,12 +1,11 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 
 import SvgIcon from '@material-ui/core/SvgIcon';
-import history from './basic/History';
 
 function GitHub(props) {
 	return (
@@ -24,8 +23,7 @@ const Navigation = () => (
 			<IconButton onClick={() => window.open(githubRepo, '_blank')}>
 				<GitHub />
 			</IconButton>
-			<Button color='inherit' onClick={() => history.push('/')}>Main</Button>
-			<Button color='inherit' onClick={() => history.push('/editor')}>Editor</Button>
+			<Typography variant='h5' color='inherit' style={{ marginLeft: 20 }}>VSCode Snippets</Typography>
 		</Toolbar>
 	</AppBar>
 );
