@@ -9,6 +9,7 @@ import ExportModal from './modals/Export';
 import PreviewModal from './modals/Preview';
 import Notification from './Notification';
 import BarNavigation from './Navigation';
+import NotFound from './pages/NotFound';
 
 const theme = createMuiTheme({
 	palette: {
@@ -26,6 +27,7 @@ const App = () => (
 			<Route path='/import' exact component={ImportModal} />
 			<Route path='/export' exact component={ExportModal} />
 			<Route path='/preview' exact component={PreviewModal} />
+			<Route component={NotFound} />
 		</Switch>
 		<Notification />
 	</MuiThemeProvider>
