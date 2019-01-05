@@ -1,4 +1,4 @@
-# VSCS - visual studio code snippets
+# VSCS <img src="/public/favicon.ico" width="32" height="32"> - visual studio code snippets
 
 Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
