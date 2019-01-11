@@ -14,7 +14,6 @@ import ImportIcon from '@material-ui/icons/Backup';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import CloneIcon from '@material-ui/icons/FilterNone';
-import PreviewIcon from '@material-ui/icons/RemoveRedEye';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
@@ -193,7 +192,6 @@ class BarSnippet extends React.Component {
 				{Button('MOVE UP', 'snippet-move-up-button', 'primary', () => this.onSnippetMove(direction.Up), <UpIcon />, isEmpty)}
 				{Button('MOVE DOWN', 'snippet-move-down-button', 'primary', () => this.onSnippetMove(direction.Down), <DownIcon />, isEmpty)}
 				{Button('IMPORT', 'snippet-import-button', 'primary', () => history.push('/import'), <ImportIcon />)}
-				{Button('PREVIEW', 'snippet-preview-button', 'primary', () => history.push('/preview'), <PreviewIcon />, isEmpty)}
 				{Button('EXPORT', 'snippet-export-button', 'secondary', () => history.push('/export'), <ExportIcon />, isEmpty)}
 			</Grid>
 		);

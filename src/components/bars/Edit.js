@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import Divider from '@material-ui/core/Divider';
+import PreviewIcon from '@material-ui/icons/RemoveRedEye';
 
 import TextField from '@material-ui/core/TextField';
 
 import Bar from './Bar';
+import Button from '../basic/Button';
+import history from '../basic/History';
 import { editSnippet, addSnippet, deleteSnippet } from '../../actions';
 
 const BarEdit = (props) => {
@@ -54,8 +59,21 @@ const BarEdit = (props) => {
 		);
 	};
 
+	const renderButtons = () => {
+		const { isEmpty } = props;
+
+		return (
+			<Grid container>
+				<Grid item xs />
+				{Button('PREVIEW', 'snippet-preview-button', 'primary', () => history.push('/preview'), <PreviewIcon />, isEmpty)}
+			</Grid>
+		);
+	};
+
 	return (
 		<Bar header='EDITOR'>
+			{renderButtons()}
+			<Divider />
 			{renderInputFields()}
 		</Bar>
 	);
