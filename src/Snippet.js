@@ -35,6 +35,9 @@ class Snippet {
 
 	export = () => {
 		let { body } = this;
+
+		this.placeholders = this.placeholders.filter(placeholder => placeholder.length > 0);
+
 		this.placeholders.forEach((element, index) => {
 			body = body.replace(new RegExp(`${element}`, 'mg'), `\${${index + 1}:${element}}`);
 		});

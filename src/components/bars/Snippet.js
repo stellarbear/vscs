@@ -120,11 +120,11 @@ class BarSnippet extends React.Component {
 					.filter(this.filterByNameCallback)
 					.map(this.convertToIntCallback)
 					.map(id => (
-<div key={id}>
+						<div key={id}>
 							<Divider />
 							{this.renderField(id)}
-</div>
-))}
+						</div>
+					))}
 			</List>
 		);
 	}
