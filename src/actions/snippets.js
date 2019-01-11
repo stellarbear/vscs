@@ -34,7 +34,7 @@ const importSnippets = json => (dispatch) => {
 			dispatch(addSnippet(snippet));
 		});
 	} catch (ex) {
-		dispatch(notify('invalid format: expected json'));
+		dispatch(notify(`invalid format: expected json. ${ex.message}`));
 	}
 };
 
