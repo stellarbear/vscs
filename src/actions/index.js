@@ -7,10 +7,11 @@ import {
 	selectSnippet,
 	clearSnippets,
 	importSnippets,
+	moveSnippet,
 } from './snippets';
 
 export {
 	notify,
 	actionTypes,
-	addSnippet, editSnippet, deleteSnippet, selectSnippet, clearSnippets, importSnippets,
+	addSnippet, editSnippet, deleteSnippet, selectSnippet, clearSnippets, importSnippets, moveSnippet,
 };

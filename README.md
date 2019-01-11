@@ -21,6 +21,7 @@ You can:
 8. Filter snippets by name
 9. Edit snippet's name / body / prefix / description
 10. Manage snippets placeholders
+11. Move snippet in the whole list
 
 ## Preview
 

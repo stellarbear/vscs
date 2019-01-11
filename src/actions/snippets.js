@@ -19,6 +19,19 @@ const clearSnippets = () => ({
 	type: actionTypes.clearSnippets,
 	payload: null,
 });
+const selectSnippet = id => ({
+	type: actionTypes.selectSnippet,
+	payload: { id },
+});
+
+const moveSnippet = (idFrom, idTo) => (dispatch) => {
+	dispatch({
+		type: actionTypes.moveSnippet,
+		payload: { idFrom, idTo },
+	});
+
+	dispatch(selectSnippet(idTo));
+};
 
 const importSnippets = json => (dispatch) => {
 	try {
@@ -38,11 +51,6 @@ const importSnippets = json => (dispatch) => {
 	}
 };
 
-const selectSnippet = id => ({
-	type: actionTypes.selectSnippet,
-	payload: { id },
-});
-
 export {
-	addSnippet, editSnippet, deleteSnippet, selectSnippet, clearSnippets, importSnippets,
+	addSnippet, editSnippet, deleteSnippet, selectSnippet, clearSnippets, importSnippets, moveSnippet,
 };

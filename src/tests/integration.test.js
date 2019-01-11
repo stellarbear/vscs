@@ -188,6 +188,20 @@ describe('SNIPPETS', () => {
 		expect(selected).toEqual(4);
 	});
 
+	/* test('move snippet', () => {
+		//  Move up
+		//  0 - modified
+		//  3 - modified
+		//  + 4 - modified
+		app.find('button#snippet-move-up-button').simulate('click');
+		app.update();
+
+		//  0 - modified
+		//  + 4 - modified
+		//  3 - modified
+		expect()
+	}) */
+
 	test('delete snippet', () => {
 		//  Add test snippet
 		//  0 - modified

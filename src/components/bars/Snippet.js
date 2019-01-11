@@ -8,6 +8,8 @@ import ExportIcon from '@material-ui/icons/Save';
 import ListItem from '@material-ui/core/ListItem';
 import AddIcon from '@material-ui/icons/AddCircle';
 import DeleteIcon from '@material-ui/icons/Delete';
+import UpIcon from '@material-ui/icons/ArrowUpward';
+import DownIcon from '@material-ui/icons/ArrowDownward';
 import ImportIcon from '@material-ui/icons/Backup';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -21,11 +23,41 @@ import Button from '../basic/Button';
 import Bar from './Bar';
 
 import { Snippet } from '../../Snippet';
-import { deleteSnippet, addSnippet, selectSnippet } from '../../actions';
+import {
+ deleteSnippet, addSnippet, selectSnippet, moveSnippet,
+} from '../../actions';
+
+const direction = {
+	Up: 'UP',
+	Down: 'DOWN',
+};
 
 class BarSnippet extends React.Component {
 	state = {
 		filterByName: '',
+	}
+
+	onSnippetMove = (moveDirection) => {
+		const { moveSnippet, snippets } = this.props;
+		const { list, selected } = snippets;
+
+		const keys = Object.keys(list).filter(this.filterByNameCallback).map(this.convertToIntCallback);
+		const index = keys.indexOf(parseInt(selected, 10));
+
+		switch (moveDirection) {
+			case direction.Up:
+				if (index > 0) {
+					moveSnippet(keys[index], keys[index - 1]);
+				}
+				break;
+
+			case direction.Down:
+				if (index < keys.length - 1) {
+					moveSnippet(keys[index], keys[index + 1]);
+				}
+				break;
+			default: break;
+		}
 	}
 
 	handleChange = (event) => {
@@ -158,6 +190,8 @@ class BarSnippet extends React.Component {
 				{Button('CLONE', 'snippet-clone-button', 'secondary', () => addSnippet(snippet.clone()), <CloneIcon />, isEmpty)}
 				{Button('DELETE', 'snippet-delete-button', 'secondary', () => deleteSnippet(selected), <DeleteIcon />, isEmpty)}
 				<Grid item xs />
+				{Button('MOVE UP', 'snippet-move-up-button', 'primary', () => this.onSnippetMove(direction.Up), <UpIcon />, isEmpty)}
+				{Button('MOVE DOWN', 'snippet-move-down-button', 'primary', () => this.onSnippetMove(direction.Down), <DownIcon />, isEmpty)}
 				{Button('IMPORT', 'snippet-import-button', 'primary', () => history.push('/import'), <ImportIcon />)}
 				{Button('PREVIEW', 'snippet-preview-button', 'primary', () => history.push('/preview'), <PreviewIcon />, isEmpty)}
 				{Button('EXPORT', 'snippet-export-button', 'secondary', () => history.push('/export'), <ExportIcon />, isEmpty)}
@@ -180,4 +214,6 @@ class BarSnippet extends React.Component {
 
 const mapStateToProps = ({ snippets }) => ({ snippets });
 
-export default connect(mapStateToProps, { deleteSnippet, addSnippet, selectSnippet })(BarSnippet);
+export default connect(mapStateToProps, {
+ deleteSnippet, addSnippet, selectSnippet, moveSnippet,
+})(BarSnippet);

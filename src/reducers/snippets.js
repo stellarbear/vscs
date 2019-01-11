@@ -58,6 +58,20 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 			return { ...newState };
 		}
 
+		case actionTypes.moveSnippet: {
+			const { idFrom, idTo } = action.payload;
+			if (!Object.prototype.hasOwnProperty.call(newState, idFrom)
+				|| !Object.prototype.hasOwnProperty.call(newState, idTo)) {
+				return newState;
+			}
+
+			const tempSnippet = { ...newState.list[idFrom] };
+			newState.list[idFrom] = { ...newState.list[idTo] };
+			newState.list[idTo] = { ...tempSnippet };
+
+			return { ...newState };
+		}
+
 		default: {
 			return newState;
 		}
