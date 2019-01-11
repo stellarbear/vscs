@@ -60,14 +60,14 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 
 		case actionTypes.moveSnippet: {
 			const { idFrom, idTo } = action.payload;
-			if (!Object.prototype.hasOwnProperty.call(newState, idFrom)
-				|| !Object.prototype.hasOwnProperty.call(newState, idTo)) {
+			if (!Object.prototype.hasOwnProperty.call(newState.list, idFrom)
+				|| !Object.prototype.hasOwnProperty.call(newState.list, idTo)) {
 				return newState;
 			}
 
-			const tempSnippet = { ...newState.list[idFrom] };
-			newState.list[idFrom] = { ...newState.list[idTo] };
-			newState.list[idTo] = { ...tempSnippet };
+			const tempSnippet = newState.list[idFrom];
+			newState.list[idFrom] = newState.list[idTo];
+			newState.list[idTo] = tempSnippet;
 
 			return { ...newState };
 		}

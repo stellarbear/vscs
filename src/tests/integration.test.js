@@ -188,19 +188,59 @@ describe('SNIPPETS', () => {
 		expect(selected).toEqual(4);
 	});
 
-	/* test('move snippet', () => {
+
+	test('move snippet', () => {
+		//	Initial state
+		//  0 (0) - modified
+		//  3 (3) - modified
+		//  + 4 (4) - modified
+		let { selected, list } = store.getState().snippets;
+		const list0 = list[0];
+		const list3 = list[3];
+		const list4 = list[4];
+
 		//  Move up
-		//  0 - modified
-		//  3 - modified
-		//  + 4 - modified
+		//  0 (0) - modified
+		//  + 3 (4) - modified
+		//  4 (3) - modified
 		app.find('button#snippet-move-up-button').simulate('click');
 		app.update();
 
-		//  0 - modified
-		//  + 4 - modified
-		//  3 - modified
-		expect()
-	}) */
+		({ selected, list } = store.getState().snippets);
+		expect(list[0]).toEqual(list0);
+		expect(list[3]).toEqual(list4);
+		expect(list[4]).toEqual(list3);
+		expect(selected).toEqual(3);
+
+		//  Move up (twice)
+		//  + 0 (4) - modified
+		//  3 (0) - modified
+		//  4 (3) - modified
+		app.find('button#snippet-move-up-button').simulate('click');
+		app.find('button#snippet-move-up-button').simulate('click');
+		app.update();
+
+		({ selected, list } = store.getState().snippets);
+		expect(list[0]).toEqual(list4);
+		expect(list[3]).toEqual(list0);
+		expect(list[4]).toEqual(list3);
+		expect(selected).toEqual(0);
+
+		//	Move down (thrice)
+		//  0 (0) - modified
+		//  3 (3) - modified
+		//  + 4 (4) - modified
+		app.find('button#snippet-move-down-button').simulate('click');
+		app.find('button#snippet-move-down-button').simulate('click');
+		app.find('button#snippet-move-down-button').simulate('click');
+		app.update();
+
+		({ selected, list } = store.getState().snippets);
+		expect(list[0]).toEqual(list0);
+		expect(list[3]).toEqual(list3);
+		expect(list[4]).toEqual(list4);
+		expect(selected).toEqual(4);
+	});
 
 	test('delete snippet', () => {
 		//  Add test snippet
