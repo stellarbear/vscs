@@ -6,13 +6,13 @@ import BarPlaceholder from '../bars/Placeholder';
 
 const Editor = () => (
 	<Grid container spacing={16} alignItems='flex-start' justify='center'>
-		<Grid item xs={12} md={4} lg={3}>
+		<Grid item xs={12} sm={8} md={8} lg={4} xl={3}>
 			<BarSnippet />
 		</Grid>
-		<Grid item xs={12} md={4} lg={4}>
+		<Grid item xs={12} sm={8} md={8} lg={4} xl={4}>
 			<BarEdit />
 		</Grid>
-		<Grid item xs={12} md={4} lg={3}>
+		<Grid item xs={12} sm={8} md={8} lg={4} xl={3}>
 			<BarPlaceholder />
 		</Grid>
 	</Grid>
