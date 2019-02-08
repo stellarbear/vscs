@@ -162,6 +162,34 @@ describe('SNIPPET', () => {
 		expect(state.list[state.selected]).toEqual(defaultSnippet);
 	});
 
+	test('moveSnippet', () => {
+		let state = { ...snippetsDefaultState };
+		state.selected = 2;
+		state.list = { 1: customSnippet, 2: defaultSnippet };
+
+		//  Move to non existent
+		state = snippetsReducer(state, {
+			type: actionTypes.moveSnippet,
+			payload: { idFrom: 1, idTo: 5 },
+		});
+		expect(state).toEqual(state);
+
+		//  Move from non existent
+		state = snippetsReducer(state, {
+			type: actionTypes.moveSnippet,
+			payload: { idFrom: 5, idTo: 1 },
+		});
+		expect(state).toEqual(state);
+
+		//  Normal movement procedure
+		state = snippetsReducer(state, {
+			type: actionTypes.moveSnippet,
+			payload: { idFrom: 2, idTo: 1 },
+		});
+		expect(state.list[1]).toEqual(defaultSnippet);
+		expect(state.list[2]).toEqual(customSnippet);
+	});
+
 	test('selectSnippet', () => {
 		let state = { ...snippetsDefaultState };
 		state.selected = 2;
