@@ -12,12 +12,6 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 	let newState = state;
 
 	switch (action.type) {
-		case actionTypes.clearSnippets: {
-			newState = { ...snippetsDefaultState };
-			newState.list = {};
-			return newState;
-		}
-
 		case actionTypes.addSnippet: {
 			if (!(action.payload.snippet instanceof Snippet)) return newState;
 
@@ -30,11 +24,10 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 
 			return { ...newState };
 		}
-
-		case actionTypes.editSnippet: {
-			const { propName, value } = action.payload;
-			newState.list[newState.selected].update({ [propName]: value });
-			return { ...newState };
+		case actionTypes.clearSnippets: {
+			newState = { ...snippetsDefaultState };
+			newState.list = {};
+			return newState;
 		}
 
 		case actionTypes.deleteSnippet: {
@@ -48,13 +41,9 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 			return { ...newState };
 		}
 
-		case actionTypes.selectSnippet: {
-			const { id } = action.payload;
-			if (!newState.list[id]) {
-				return newState;
-			}
-
-			newState.selected = id;
+		case actionTypes.editSnippet: {
+			const { propName, value } = action.payload;
+			newState.list[newState.selected].update({ [propName]: value });
 			return { ...newState };
 		}
 
@@ -71,6 +60,17 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 
 			return { ...newState };
 		}
+
+		case actionTypes.selectSnippet: {
+			const { id } = action.payload;
+			if (!newState.list[id]) {
+				return newState;
+			}
+
+			newState.selected = id;
+			return { ...newState };
+		}
+
 
 		default: {
 			return newState;

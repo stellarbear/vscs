@@ -73,56 +73,22 @@ describe('SNIPPET', () => {
 		});
 	});
 
-	test('selectSnippet', () => {
+	test('clearSnippets', () => {
 		let state = { ...snippetsDefaultState };
+		state.isEmpty = false;
 		state.selected = 2;
-		state.list = { 1: customSnippet, 2: defaultSnippet };
+		state.guid = 4;
+		state.list = { 1: customSnippet, 2: defaultSnippet, 3: defaultSnippet };
 
-		//  Select non existent
+		//  Delete all
 		state = snippetsReducer(state, {
-			type: actionTypes.selectSnippet,
-			payload: { id: 5 },
+			type: actionTypes.clearSnippets,
+			payload: null,
 		});
-		expect(state.selected).toEqual(2);
 
-		//  Select existent
-		state = snippetsReducer(state, {
-			type: actionTypes.selectSnippet,
-			payload: { id: 1 },
-		});
-		expect(state.selected).toEqual(1);
+		expect(state).toMatchObject({ ...snippetsDefaultState });
 	});
 
-	test('editSnippet', () => {
-		let state = { ...snippetsDefaultState };
-		state.selected = 1;
-		state.list = { 1: customSnippet, 2: defaultSnippet };
-
-		//  Edit placeholders
-		expect(state.list[state.selected].placeholders).toEqual(['#p']);
-		state = snippetsReducer(state, {
-			type: actionTypes.editSnippet,
-			payload: { propName: 'placeholders', value: ['#m', '#p'] },
-		});
-		expect(state.list[state.selected].placeholders).toEqual(['#m', '#p']);
-
-		//  Edit other parts
-		expect(state.list[state.selected].body).toEqual('b');
-		state = snippetsReducer(state, {
-			type: actionTypes.editSnippet,
-			payload: { propName: 'body', value: 'm' },
-		});
-		expect(state.list[state.selected].body).toEqual('m');
-
-		//  Edit non-existent
-		state.selected = 2;
-		expect(state.list[state.selected]).toEqual(defaultSnippet);
-		state = snippetsReducer(state, {
-			type: actionTypes.editSnippet,
-			payload: { propName: 'invalid', value: null },
-		});
-		expect(state.list[state.selected]).toEqual(defaultSnippet);
-	});
 
 	test('deleteSnippet', () => {
 		let state = { ...snippetsDefaultState };
@@ -165,19 +131,54 @@ describe('SNIPPET', () => {
 		expect(Object.keys(state.list)).toEqual([]);
 	});
 
-	test('clearSnippets', () => {
+	test('editSnippet', () => {
 		let state = { ...snippetsDefaultState };
-		state.isEmpty = false;
-		state.selected = 2;
-		state.guid = 4;
-		state.list = { 1: customSnippet, 2: defaultSnippet, 3: defaultSnippet };
+		state.selected = 1;
+		state.list = { 1: customSnippet, 2: defaultSnippet };
 
-		//  Delete all
+		//  Edit placeholders
+		expect(state.list[state.selected].placeholders).toEqual(['#p']);
 		state = snippetsReducer(state, {
-			type: actionTypes.clearSnippets,
-			payload: null,
+			type: actionTypes.editSnippet,
+			payload: { propName: 'placeholders', value: ['#m', '#p'] },
 		});
+		expect(state.list[state.selected].placeholders).toEqual(['#m', '#p']);
 
-		expect(state).toMatchObject({ ...snippetsDefaultState });
+		//  Edit other parts
+		expect(state.list[state.selected].body).toEqual('b');
+		state = snippetsReducer(state, {
+			type: actionTypes.editSnippet,
+			payload: { propName: 'body', value: 'm' },
+		});
+		expect(state.list[state.selected].body).toEqual('m');
+
+		//  Edit non-existent
+		state.selected = 2;
+		expect(state.list[state.selected]).toEqual(defaultSnippet);
+		state = snippetsReducer(state, {
+			type: actionTypes.editSnippet,
+			payload: { propName: 'invalid', value: null },
+		});
+		expect(state.list[state.selected]).toEqual(defaultSnippet);
+	});
+
+	test('selectSnippet', () => {
+		let state = { ...snippetsDefaultState };
+		state.selected = 2;
+		state.list = { 1: customSnippet, 2: defaultSnippet };
+
+		//  Select non existent
+		state = snippetsReducer(state, {
+			type: actionTypes.selectSnippet,
+			payload: { id: 5 },
+		});
+		expect(state.selected).toEqual(2);
+
+		//  Select existent
+		state = snippetsReducer(state, {
+			type: actionTypes.selectSnippet,
+			payload: { id: 1 },
+		});
+		expect(state.selected).toEqual(1);
 	});
 });
