@@ -5,7 +5,7 @@ import BarSnippet from '../bars/Snippet';
 import BarPlaceholder from '../bars/Placeholder';
 
 const Editor = () => (
-	<Grid container spacing={16} alignItems='flex-start' justify='center'>
+	<Grid container alignItems='flex-start' justify='center'>
 		<Grid item xs={12} sm={8} md={8} lg={4} xl={3}>
 			<BarSnippet />
 		</Grid>

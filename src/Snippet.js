@@ -7,7 +7,7 @@ class Snippet {
 
 	update = (obj) => { Object.keys(obj).forEach((key) => { this[key] = obj[key] || this[key]; }); }
 
-	compareTo = snippet => this.name === snippet.name
+	compareTo = (snippet) => this.name === snippet.name
 		&& this.prefix === snippet.prefix
 		&& this.description === snippet.description
 

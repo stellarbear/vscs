@@ -5,7 +5,7 @@ import { Divider } from '@material-ui/core';
 
 const style = {
 	padding: 10,
-	marginTop: 8,
+	margin: 8,
 };
 
 const Bar = ({ header, children }) => (
