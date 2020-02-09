@@ -19,11 +19,20 @@ const githubRepo = 'https://github.com/stellarbear/vscs';
 
 const Navigation = () => (
 	<AppBar position='static'>
-		<Toolbar style={{ background: 'linear-gradient(45deg, #2196f3 30%, #21cbf3 90%)' }}>
+		<Toolbar style={{
+			background: 'linear-gradient(45deg, #2196f3 30%, #21cbf3 90%)',
+			display: "flex", flexDirection: "row", justifyContent: "space-between"
+		}}>
+			<div style={{ display: "flex", flexDirection: "row" }}>
+				<img alt="logo" height={48} width={48} src={`/logo.png`} />
+				<div>
+					<Typography variant='h5' color='inherit' style={{ marginLeft: 20 }}>VSCode Snippets</Typography>
+					<Typography variant='caption' style={{ marginLeft: 20 }}>@stellarbears</Typography>
+				</div>
+			</div>
 			<IconButton onClick={() => window.open(githubRepo, '_blank')}>
 				<GitHub />
 			</IconButton>
-			<Typography variant='h5' color='inherit' style={{ marginLeft: 20 }}>VSCode Snippets</Typography>
 		</Toolbar>
 	</AppBar>
 );
