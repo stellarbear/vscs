@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 
-const notify = message => ({
+const notify = (message) => ({
 	type: actionTypes.notify,
 	payload: { message },
 });

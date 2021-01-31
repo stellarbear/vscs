@@ -11,14 +11,13 @@ import Button from '../basic/Button';
 
 import { editSnippet, notify } from '../../actions';
 
-
 const BarPlaceholder = (props) => {
 	const editPlaceholders = (placeholders) => {
 		props.editSnippet('placeholders', placeholders);
 	};
 
 	const handleDeletePlaceholderClick = (placeholder) => {
-		const placeholders = props.selectedSnippet.placeholders.filter(el => el !== placeholder);
+		const placeholders = props.selectedSnippet.placeholders.filter((el) => el !== placeholder);
 		editPlaceholders(placeholders);
 	};
 
@@ -34,11 +33,9 @@ const BarPlaceholder = (props) => {
 			id={`placeholder-${index}-input`}
 			margin='normal'
 			variant='filled'
-
 			label={`{${index + 1}:${placeholder}}`}
-
 			fullWidth
-			onChange={event => handlePlaceholderChange(event, index)}
+			onChange={(event) => handlePlaceholderChange(event, index)}
 			value={placeholder}
 		/>
 	);
@@ -92,7 +89,6 @@ const BarPlaceholder = (props) => {
 		</Bar>
 	);
 };
-
 
 const mapStateToProps = ({ snippets }) => {
 	const { list, isEmpty, selected } = snippets;

@@ -28,16 +28,13 @@ const BarEdit = (props) => {
 				margin='normal'
 				variant='filled'
 				autoComplete='off'
-
 				id={`snippet-${name}-input`}
 				helperText={helperText}
 				label={name}
-
 				fullWidth
 				onChange={handleChange}
 				value={value}
 				name={name}
-
 				multiline={isMultiLine}
 			/>
 		);

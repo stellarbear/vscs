@@ -6,12 +6,15 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
 class Notification extends React.Component {
-	state = {
-		open: false,
-		message: '',
-	};
+	constructor() {
+		super();
+		this.state = {
+			open: false,
+			message: '',
+		};
+	}
 
-	componentWillReceiveProps(props) {
+	UNSAFE_componentWillReceiveProps(props) {
 		this.setState({
 			...props.notification, open: true,
 		});
@@ -22,12 +25,14 @@ class Notification extends React.Component {
 	};
 
 	render() {
+		const { handleClose, state: { open, message } } = this;
 		return (
 			<div>
 				<Snackbar
 					anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-					{...this.state}
-					onClose={this.handleClose}
+					open={open}
+					message={message}
+					onClose={handleClose}
 					TransitionComponent={Fade}
 					action={(
 						<IconButton

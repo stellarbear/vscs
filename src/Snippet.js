@@ -5,7 +5,7 @@ class Snippet {
 		this.name, this.prefix, this.description, this.body, [...this.placeholders],
 	)
 
-	update = (obj) => { Object.keys(obj).forEach((key) => { this[key] = obj[key] || this[key]; }); }
+	update = (obj) => { Object.keys(obj).forEach((key) => { this[key] = obj[key] ?? this[key]; }); }
 
 	compareTo = (snippet) => this.name === snippet.name
 		&& this.prefix === snippet.prefix
@@ -36,7 +36,7 @@ class Snippet {
 	export = () => {
 		let { body } = this;
 
-		this.placeholders = this.placeholders.filter(placeholder => placeholder.length > 0);
+		this.placeholders = this.placeholders.filter((placeholder) => placeholder.length > 0);
 
 		this.placeholders.forEach((element, index) => {
 			body = body.replace(new RegExp(`${element}`, 'mg'), `\${${index + 1}:${element}}`);

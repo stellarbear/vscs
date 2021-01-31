@@ -31,6 +31,15 @@
         "quotes": [
             "error",
             "single"
+        ],
+        "camelcase": [
+            "error",
+            {
+                "ignoreDestructuring": true,
+                "allow": [
+                    "^UNSAFE_"
+                ]
+            }
         ]
     }
 }

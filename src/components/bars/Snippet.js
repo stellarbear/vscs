@@ -23,7 +23,7 @@ import Bar from './Bar';
 
 import { Snippet } from '../../Snippet';
 import {
- deleteSnippet, addSnippet, selectSnippet, moveSnippet,
+	deleteSnippet, addSnippet, selectSnippet, moveSnippet,
 } from '../../actions';
 
 const direction = {
@@ -32,8 +32,11 @@ const direction = {
 };
 
 class BarSnippet extends React.Component {
-	state = {
-		filterByName: '',
+	constructor() {
+		super();
+		this.state = {
+			filterByName: '',
+		};
 	}
 
 	onSnippetMove = (moveDirection) => {
@@ -72,7 +75,7 @@ class BarSnippet extends React.Component {
 			.includes(filterByName.toUpperCase());
 	}
 
-	convertToIntCallback = id => parseInt(id, 10)
+	convertToIntCallback = (id) => parseInt(id, 10)
 
 	onKeyDown = (event) => {
 		const UP = 38;
@@ -150,7 +153,7 @@ class BarSnippet extends React.Component {
 					.keys(snippets.list)
 					.filter(this.filterByNameCallback)
 					.map(this.convertToIntCallback)
-					.map(id => (
+					.map((id) => (
 						<div key={id}>
 							<Divider />
 							{this.renderField(id)}
@@ -213,5 +216,5 @@ class BarSnippet extends React.Component {
 const mapStateToProps = ({ snippets }) => ({ snippets });
 
 export default connect(mapStateToProps, {
- deleteSnippet, addSnippet, selectSnippet, moveSnippet,
+	deleteSnippet, addSnippet, selectSnippet, moveSnippet,
 })(BarSnippet);

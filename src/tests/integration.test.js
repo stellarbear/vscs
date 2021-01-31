@@ -1,8 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import Enzyme from 'enzyme';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 import { Snippet } from '../Snippet';
 import { reducers } from '../reducers';
@@ -10,6 +11,7 @@ import { reducers } from '../reducers';
 import App from '../components/App';
 import Router from '../components/basic/Router';
 
+Enzyme.configure({ adapter: new Adapter() });
 
 let app;
 const initialState = {};
@@ -19,7 +21,7 @@ const store = createStore(
 );
 
 beforeAll(() => {
-	app = mount(
+	app = Enzyme.mount(
 		<Provider store={store}>
 			<Router>
 				<App />
@@ -188,7 +190,6 @@ describe('SNIPPETS', () => {
 		expect(selected).toEqual(4);
 	});
 
-
 	test('move snippet', () => {
 		//	Initial state
 		//  0 (0) - modified
@@ -256,7 +257,6 @@ describe('SNIPPETS', () => {
 	});
 });
 
-
 describe('PLACEHOLDERS', () => {
 	test('add a placeholder', () => {
 		//  Add 3 placeholders
@@ -305,7 +305,6 @@ describe('PLACEHOLDERS', () => {
 		expect(list[selected].placeholders.sort()).toEqual(['cat', 'bird'].sort());
 	});
 });
-
 
 describe('MODALS', () => {
 	const trimString = (string) => {

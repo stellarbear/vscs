@@ -7,11 +7,14 @@ import history from '../basic/History';
 import Modal from '../basic/Modal';
 
 class ModalPreview extends React.Component {
-	state = {
-		json: '',
+	constructor() {
+		super();
+		this.state = {
+			json: '',
+		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		const { snippets } = this.props;
 		const { list, selected } = snippets;
 		const snippet = list[selected];
@@ -65,7 +68,6 @@ class ModalPreview extends React.Component {
 			/>
 		);
 	}
-
 
 	render() {
 		return (

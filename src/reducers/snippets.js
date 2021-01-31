@@ -43,7 +43,7 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 
 		case actionTypes.editSnippet: {
 			const { propName, value } = action.payload;
-			newState.list[newState.selected].update({ [propName]: value });
+			newState.list[newState.selected].update({ [propName]: value ?? '' });
 			return { ...newState };
 		}
 
@@ -70,7 +70,6 @@ const snippets = (state = { ...snippetsDefaultState }, action) => {
 			newState.selected = id;
 			return { ...newState };
 		}
-
 
 		default: {
 			return newState;

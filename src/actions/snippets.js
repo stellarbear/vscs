@@ -3,7 +3,7 @@ import { notify } from './notification';
 import history from '../components/basic/History';
 import { Snippet } from '../Snippet';
 
-const addSnippet = snippet => ({
+const addSnippet = (snippet) => ({
 	type: actionTypes.addSnippet,
 	payload: { snippet },
 });
@@ -11,7 +11,7 @@ const editSnippet = (propName, value) => ({
 	type: actionTypes.editSnippet,
 	payload: { propName, value },
 });
-const deleteSnippet = id => ({
+const deleteSnippet = (id) => ({
 	type: actionTypes.deleteSnippet,
 	payload: { id },
 });
@@ -19,7 +19,7 @@ const clearSnippets = () => ({
 	type: actionTypes.clearSnippets,
 	payload: null,
 });
-const selectSnippet = id => ({
+const selectSnippet = (id) => ({
 	type: actionTypes.selectSnippet,
 	payload: { id },
 });
@@ -33,7 +33,7 @@ const moveSnippet = (idFrom, idTo) => (dispatch) => {
 	dispatch(selectSnippet(idTo));
 };
 
-const importSnippets = json => (dispatch) => {
+const importSnippets = (json) => (dispatch) => {
 	try {
 		const parsed = JSON.parse(json);
 

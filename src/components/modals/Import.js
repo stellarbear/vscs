@@ -6,10 +6,12 @@ import { importSnippets } from '../../actions';
 import history from '../basic/History';
 import Modal from '../basic/Modal';
 
-
 class ModalImport extends React.Component {
-	state = {
-		json: '',
+	constructor() {
+		super();
+		this.state = {
+			json: '',
+		};
 	}
 
 	onDismiss = () => {
@@ -59,7 +61,6 @@ class ModalImport extends React.Component {
 			/>
 		);
 	}
-
 
 	render() {
 		return (

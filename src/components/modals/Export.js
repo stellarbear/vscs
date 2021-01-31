@@ -7,11 +7,14 @@ import history from '../basic/History';
 import Modal from '../basic/Modal';
 
 class ModalExport extends React.Component {
-	state = {
-		json: '',
+	constructor() {
+		super();
+		this.state = {
+			json: '',
+		};
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		const { snippets } = this.props;
 		const { list, isEmpty } = snippets;
 
@@ -64,7 +67,6 @@ class ModalExport extends React.Component {
 			/>
 		);
 	}
-
 
 	render() {
 		return (

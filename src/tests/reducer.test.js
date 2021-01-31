@@ -30,7 +30,6 @@ describe('NOTIFICATION', () => {
 	});
 });
 
-
 const defaultSnippet = Snippet.createDefault();
 const customSnippet = new Snippet('n', 'p', 'd', 'b', ['#p']);
 describe('SNIPPET', () => {
@@ -88,7 +87,6 @@ describe('SNIPPET', () => {
 
 		expect(state).toMatchObject({ ...snippetsDefaultState });
 	});
-
 
 	test('deleteSnippet', () => {
 		let state = { ...snippetsDefaultState };
